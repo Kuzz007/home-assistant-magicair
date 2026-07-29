@@ -44,6 +44,18 @@
         "name": "Target temperature"
       }
     },
+    "select": {
+      "fan_speed": {
+        "name": "Speed"
+      },
+      "operation_mode": {
+        "name": "Operation mode",
+        "state": {
+          "auto": "Automatic",
+          "manual": "Manual"
+        }
+      }
+    },
     "sensor": {
       "co2": {
         "name": "CO₂"

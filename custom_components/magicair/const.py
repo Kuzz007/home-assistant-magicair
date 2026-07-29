@@ -25,10 +25,13 @@ SUPPORTED_DEVICE_TYPES: Final = {
     DEVICE_TYPE_BREEZER_4S,
 }
 
-PLATFORMS: Final = ["fan", "number", "sensor", "switch"]
+PLATFORMS: Final = ["fan", "number", "select", "sensor", "switch"]
 
 PRESET_AUTO: Final = "auto"
-PRESET_MANUAL: Final = "manual"
+PRESET_NORMAL: Final = "normal"
+
+ZONE_MODE_AUTO: Final = "auto"
+ZONE_MODE_MANUAL: Final = "manual"
 
 HEATER_MODE_ON: Final = "heat"
 HEATER_MODE_OFF: Final = "maintenance"

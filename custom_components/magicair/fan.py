@@ -2,18 +2,23 @@
 
 from __future__ import annotations
 
-import math
 from typing import Any
 
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+from homeassistant.util.percentage import (
+    ordered_list_item_to_percentage,
+    percentage_to_ordered_list_item,
+)
 
 from . import MagicAirConfigEntry
 from .const import (
     DEVICE_TYPE_BREEZER_4S,
     PRESET_AUTO,
-    PRESET_MANUAL,
+    PRESET_NORMAL,
+    ZONE_MODE_AUTO,
+    ZONE_MODE_MANUAL,
 )
 from .entity import (
     MagicAirEntity,
@@ -21,6 +26,22 @@ from .entity import (
     get_zone_co2_target,
     iter_devices,
 )
+
+
+def _speed_to_percentage(speed: int, speed_count: int) -> int:
+    """Convert a discrete Tion speed to a Home Assistant percentage."""
+    return ordered_list_item_to_percentage(
+        list(range(1, speed_count + 1)),
+        speed,
+    )
+
+
+def _percentage_to_speed(percentage: int, speed_count: int) -> int:
+    """Convert a Home Assistant percentage to a discrete Tion speed."""
+    return percentage_to_ordered_list_item(
+        list(range(1, speed_count + 1)),
+        percentage,
+    )
 
 
 async def async_setup_entry(
@@ -48,7 +69,7 @@ class MagicAirBreezerFan(MagicAirEntity, FanEntity):
         | FanEntityFeature.SET_SPEED
         | FanEntityFeature.PRESET_MODE
     )
-    _attr_preset_modes = [PRESET_MANUAL, PRESET_AUTO]
+    _attr_preset_modes = [PRESET_NORMAL, PRESET_AUTO]
 
     def __init__(
         self,
@@ -81,13 +102,17 @@ class MagicAirBreezerFan(MagicAirEntity, FanEntity):
             return 0
         device = self.device or {}
         speed = int(device.get("data", {}).get("speed") or 1)
-        return round(speed / self.speed_count * 100)
+        return _speed_to_percentage(speed, self.speed_count)
 
     @property
     def preset_mode(self) -> str | None:
         """Return automatic or manual zone mode."""
         mode = (self.zone or {}).get("mode", {}).get("current")
-        return mode if mode in self.preset_modes else None
+        if mode == ZONE_MODE_AUTO:
+            return PRESET_AUTO
+        if mode == ZONE_MODE_MANUAL:
+            return PRESET_NORMAL
+        return None
 
     async def async_turn_on(
         self,
@@ -152,13 +177,14 @@ class MagicAirBreezerFan(MagicAirEntity, FanEntity):
         await self.coordinator.async_execute_zone_command(
             str(zone["guid"]),
             {
-                "mode": preset_mode,
+                "mode": (
+                    ZONE_MODE_AUTO
+                    if preset_mode == PRESET_AUTO
+                    else ZONE_MODE_MANUAL
+                ),
                 "co2": get_zone_co2_target(zone),
             },
         )
 
     def _percentage_to_speed(self, percentage: int) -> int:
-        return max(
-            1,
-            min(self.speed_count, math.ceil(percentage / 100 * self.speed_count)),
-        )
+        return _percentage_to_speed(percentage, self.speed_count)

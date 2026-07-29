@@ -15,6 +15,8 @@ from .const import (
     DOMAIN,
     GATE_OUTSIDE_4S,
     HEATER_MODE_OFF,
+    ZONE_MODE_AUTO,
+    ZONE_MODE_MANUAL,
 )
 from .coordinator import MagicAirCoordinator
 
@@ -133,12 +135,15 @@ class MagicAirEntity(CoordinatorEntity[MagicAirCoordinator]):
     async def async_ensure_manual_mode(self) -> None:
         """Switch a zone to manual before changing a device setting."""
         zone = self.zone
-        if not zone or zone.get("mode", {}).get("current") != "auto":
+        if (
+            not zone
+            or zone.get("mode", {}).get("current") != ZONE_MODE_AUTO
+        ):
             return
         await self.coordinator.async_execute_zone_command(
             str(zone["guid"]),
             {
-                "mode": "manual",
+                "mode": ZONE_MODE_MANUAL,
                 "co2": get_zone_co2_target(zone),
             },
         )
