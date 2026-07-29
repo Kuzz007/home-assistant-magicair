@@ -1,74 +1,77 @@
-# MagicAir for Home Assistant
+# MagicAir для Home Assistant
 
-Unofficial Home Assistant integration for the MagicAir cloud, the MagicAir
-BS310 base station, and Tion Breezer 4S.
+Неофициальная интеграция Home Assistant с облаком MagicAir, базовой станцией
+MagicAir BS310 и бризером Tion 4S.
 
 > [!IMPORTANT]
-> This project is not affiliated with Tion. It uses the same undocumented cloud
-> service as the MagicAir applications. A MagicAir server change may require an
-> integration update, and device control requires internet access.
+> Проект не связан с компанией Tion. Интеграция использует тот же
+> недокументированный облачный сервис, что и приложения MagicAir. Изменения на
+> сервере MagicAir могут потребовать обновления интеграции, а для управления
+> устройствами необходим доступ в интернет.
 
-## Supported devices and features
+## Поддерживаемые устройства и возможности
 
 ### MagicAir BS310
 
-- CO₂, temperature, and humidity sensors
-- indicator backlight control
+- датчики CO₂, температуры и влажности;
+- управление подсветкой индикатора.
 
-### Tion Breezer 4S
+### Tion 4S
 
-- turn on and off
-- explicit speed selector (1–6) and percentage control
-- explicit automatic and manual operation selector
-- heater and target temperature control
-- outside-air and recirculation modes
-- inlet and outlet temperature
-- estimated remaining filter life
+- включение и выключение;
+- выбор одной из шести скоростей и процентное управление;
+- ручной и автоматический режимы;
+- управление нагревом и целевой температурой;
+- приток наружного воздуха и рециркуляция;
+- температура воздуха на входе и выходе;
+- оценка оставшегося ресурса фильтра.
 
-### Yandex Smart Home
+### Яндекс Умный дом
 
-The main fan entity is compatible with
-[Yandex Smart Home / Yaha Cloud](docs/YANDEX_SMART_HOME.md). The guide also
-shows how to expose heating, target temperature, and recirculation as
-capabilities of the same Yandex device.
+Основная сущность вентилятора совместима с
+[Яндекс Умным домом и Yaha Cloud](docs/YANDEX_SMART_HOME.md). В инструкции
+также показано, как объединить нагрев, целевую температуру и рециркуляцию в
+одном устройстве Яндекса.
 
-## Installation
+## Установка
 
-### HACS custom repository
+### Пользовательский репозиторий HACS
 
-1. Open HACS in Home Assistant.
-2. Select **Integrations**.
-3. Open the three-dot menu and select **Custom repositories**.
-4. Add `https://github.com/Kuzz007/home-assistant-magicair` as an
-   **Integration** repository.
-5. Install **MagicAir** and restart Home Assistant.
+1. Откройте HACS в Home Assistant.
+2. Выберите **Интеграции**.
+3. Откройте меню с тремя точками и выберите
+   **Пользовательские репозитории**.
+4. Добавьте `https://github.com/Kuzz007/home-assistant-magicair` как репозиторий
+   категории **Интеграция**.
+5. Установите **MagicAir** и перезапустите Home Assistant.
 
-### Manual installation
+### Ручная установка
 
-Copy `custom_components/magicair` into the `custom_components` directory in
-your Home Assistant configuration, then restart Home Assistant.
+Скопируйте каталог `custom_components/magicair` в каталог `custom_components`
+вашей конфигурации Home Assistant, затем перезапустите Home Assistant.
 
-## Configuration
+## Настройка
 
-1. Open **Settings → Devices & services**.
-2. Select **Add integration**.
-3. Search for **MagicAir**.
-4. Enter the email address and password used by the MagicAir mobile app.
-5. If the account contains several homes, choose the one to add.
+1. Откройте **Настройки → Устройства и службы**.
+2. Нажмите **Добавить интеграцию**.
+3. Найдите **MagicAir**.
+4. Введите электронную почту и пароль от мобильного приложения MagicAir.
+5. Если в учётной записи несколько домов, выберите нужный.
 
-Credentials are stored in the private Home Assistant configuration and are sent
-only to the MagicAir authentication service. Diagnostic downloads redact
-credentials, tokens, GUIDs, MAC addresses, and serial numbers.
+Данные учётной записи хранятся в закрытой конфигурации Home Assistant и
+передаются только службе авторизации MagicAir. При скачивании диагностики
+скрываются учётные данные, токены, GUID, MAC-адреса и серийные номера.
 
-## Compatibility
+## Совместимость
 
-The initial release targets Home Assistant 2026.7 and later.
+Поддерживается Home Assistant 2026.7.4 и новее.
 
-## Support
+## Поддержка
 
-Open an issue and attach the Home Assistant error message or a redacted
-diagnostics download. Never post your MagicAir password or access token.
+Создайте обращение в разделе Issues и приложите сообщение об ошибке Home
+Assistant или очищенный файл диагностики. Никогда не публикуйте пароль MagicAir
+или токен доступа.
 
-## License
+## Лицензия
 
 [MIT](LICENSE)

@@ -39,6 +39,19 @@
     }
   },
   "entity": {
+    "fan": {
+      "breezer": {
+        "name": "Бризер",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "auto": "Автоматический",
+              "normal": "Ручной"
+            }
+          }
+        }
+      }
+    },
     "number": {
       "target_temperature": {
         "name": "Целевая температура"
@@ -81,7 +94,7 @@
         "name": "Подсветка"
       },
       "heater": {
-        "name": "Нагреватель"
+        "name": "Нагрев"
       },
       "recirculation": {
         "name": "Рециркуляция"

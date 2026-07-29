@@ -63,6 +63,7 @@ class MagicAirBreezerFan(MagicAirEntity, FanEntity):
     """Representation of a Tion Breezer 4S."""
 
     _attr_name = None
+    _attr_translation_key = "breezer"
     _attr_supported_features = (
         FanEntityFeature.TURN_ON
         | FanEntityFeature.TURN_OFF
