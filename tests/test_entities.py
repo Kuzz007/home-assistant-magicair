@@ -5,11 +5,16 @@ from __future__ import annotations
 from custom_components.magicair.const import (
     GATE_OUTSIDE_4S,
     HEATER_MODE_OFF,
+    PLATFORMS,
 )
 from custom_components.magicair.entity import (
     build_breezer_payload,
     get_zone_co2_target,
     iter_devices,
+)
+from custom_components.magicair.fan import (
+    _percentage_to_speed,
+    _speed_to_percentage,
 )
 from custom_components.magicair.sensor import _filter_remaining
 
@@ -80,3 +85,20 @@ def test_location_helpers() -> None:
 
     assert iter_devices(location) == [(zone, station)]
     assert get_zone_co2_target(zone) == 950
+
+
+def test_select_platform_is_loaded() -> None:
+    """The explicit speed and operation controls are loaded."""
+    assert "select" in PLATFORMS
+
+
+def test_six_discrete_speeds_match_home_assistant_percentages() -> None:
+    """Speed conversion stays reversible for all six Tion levels."""
+    percentages = [16, 33, 50, 66, 83, 100]
+
+    assert [
+        _speed_to_percentage(speed, 6) for speed in range(1, 7)
+    ] == percentages
+    assert [
+        _percentage_to_speed(percentage, 6) for percentage in percentages
+    ] == list(range(1, 7))

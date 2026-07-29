@@ -18,12 +18,19 @@ BS310 base station, and Tion Breezer 4S.
 ### Tion Breezer 4S
 
 - turn on and off
-- six-speed control
-- automatic and manual modes
+- explicit speed selector (1–6) and percentage control
+- explicit automatic and manual operation selector
 - heater and target temperature control
 - outside-air and recirculation modes
 - inlet and outlet temperature
 - estimated remaining filter life
+
+### Yandex Smart Home
+
+The main fan entity is compatible with
+[Yandex Smart Home / Yaha Cloud](docs/YANDEX_SMART_HOME.md). The guide also
+shows how to expose heating, target temperature, and recirculation as
+capabilities of the same Yandex device.
 
 ## Installation
 

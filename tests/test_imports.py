@@ -15,6 +15,7 @@ MODULES = (
     "custom_components.magicair.entity",
     "custom_components.magicair.fan",
     "custom_components.magicair.number",
+    "custom_components.magicair.select",
     "custom_components.magicair.sensor",
     "custom_components.magicair.switch",
 )
