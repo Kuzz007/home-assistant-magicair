@@ -39,6 +39,19 @@
     }
   },
   "entity": {
+    "fan": {
+      "breezer": {
+        "name": "Breezer",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "auto": "Automatic",
+              "normal": "Manual"
+            }
+          }
+        }
+      }
+    },
     "number": {
       "target_temperature": {
         "name": "Target temperature"
