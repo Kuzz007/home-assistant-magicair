@@ -1,0 +1,80 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This MagicAir home is already configured.",
+      "missing_credentials": "Account credentials were lost. Start setup again.",
+      "reauth_successful": "MagicAir account authentication was updated."
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the MagicAir cloud.",
+      "invalid_auth": "Invalid email address or password.",
+      "location_missing": "The configured MagicAir home is not available to this account.",
+      "no_locations": "No MagicAir homes were found on this account.",
+      "unknown": "Unexpected response from the MagicAir cloud."
+    },
+    "step": {
+      "location": {
+        "data": {
+          "location_id": "Home"
+        },
+        "description": "Choose the MagicAir home to add.",
+        "title": "Choose a home"
+      },
+      "reauth_confirm": {
+        "data": {
+          "password": "Password",
+          "username": "Email"
+        },
+        "description": "Enter the current credentials for your MagicAir account.",
+        "title": "Reconnect MagicAir"
+      },
+      "user": {
+        "data": {
+          "password": "Password",
+          "username": "Email"
+        },
+        "description": "Enter the account used by the MagicAir mobile application. Credentials are sent only to the MagicAir cloud.",
+        "title": "Connect MagicAir"
+      }
+    }
+  },
+  "entity": {
+    "number": {
+      "target_temperature": {
+        "name": "Target temperature"
+      }
+    },
+    "sensor": {
+      "co2": {
+        "name": "CO₂"
+      },
+      "filter_remaining": {
+        "name": "Filter remaining"
+      },
+      "humidity": {
+        "name": "Humidity"
+      },
+      "inlet_temperature": {
+        "name": "Inlet temperature"
+      },
+      "outlet_temperature": {
+        "name": "Outlet temperature"
+      },
+      "temperature": {
+        "name": "Temperature"
+      }
+    },
+    "switch": {
+      "backlight": {
+        "name": "Backlight"
+      },
+      "heater": {
+        "name": "Heater"
+      },
+      "recirculation": {
+        "name": "Recirculation"
+      }
+    }
+  },
+  "title": "MagicAir"
+}

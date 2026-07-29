@@ -1,0 +1,80 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Этот дом MagicAir уже настроен.",
+      "missing_credentials": "Данные учётной записи потеряны. Запустите настройку заново.",
+      "reauth_successful": "Авторизация учётной записи MagicAir обновлена."
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться к облаку MagicAir.",
+      "invalid_auth": "Неверный адрес электронной почты или пароль.",
+      "location_missing": "Настроенный дом MagicAir недоступен этой учётной записи.",
+      "no_locations": "В этой учётной записи не найдено домов MagicAir.",
+      "unknown": "Облако MagicAir вернуло неожиданный ответ."
+    },
+    "step": {
+      "location": {
+        "data": {
+          "location_id": "Дом"
+        },
+        "description": "Выберите дом MagicAir, который нужно добавить.",
+        "title": "Выбор дома"
+      },
+      "reauth_confirm": {
+        "data": {
+          "password": "Пароль",
+          "username": "Электронная почта"
+        },
+        "description": "Введите актуальные данные учётной записи MagicAir.",
+        "title": "Повторное подключение MagicAir"
+      },
+      "user": {
+        "data": {
+          "password": "Пароль",
+          "username": "Электронная почта"
+        },
+        "description": "Введите учётную запись из мобильного приложения MagicAir. Данные передаются только в облако MagicAir.",
+        "title": "Подключение MagicAir"
+      }
+    }
+  },
+  "entity": {
+    "number": {
+      "target_temperature": {
+        "name": "Целевая температура"
+      }
+    },
+    "sensor": {
+      "co2": {
+        "name": "CO₂"
+      },
+      "filter_remaining": {
+        "name": "Остаток ресурса фильтра"
+      },
+      "humidity": {
+        "name": "Влажность"
+      },
+      "inlet_temperature": {
+        "name": "Температура на входе"
+      },
+      "outlet_temperature": {
+        "name": "Температура на выходе"
+      },
+      "temperature": {
+        "name": "Температура"
+      }
+    },
+    "switch": {
+      "backlight": {
+        "name": "Подсветка"
+      },
+      "heater": {
+        "name": "Нагреватель"
+      },
+      "recirculation": {
+        "name": "Рециркуляция"
+      }
+    }
+  },
+  "title": "MagicAir"
+}
